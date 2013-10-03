@@ -41,6 +41,8 @@ ROOT_DIR=$(dirname $BIN_DIR)
 BUILD_DIR=$1
 CACHE_DIR=$2
 ABS_BUILD_DIR=$(cd $(dirname $BUILD_DIR); pwd) 
+echo $BUILD_DIR
+echo $CACHE_DIR
 
 # The detected application type (`Python`|`Python/Django`).
 NAME=$($BIN_DIR/detect $BUILD_DIR)
@@ -321,7 +323,6 @@ if [ ! -f ${cache_target} ]; then
   curl -s ${opencv_url} > ${opencv_file}
   tar xf ${opencv_file}
   cd ${opencv_dir}
-  #mkdir build
   echo "pwd"
   pwd
   echo "ls"
