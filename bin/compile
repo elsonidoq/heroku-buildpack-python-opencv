@@ -42,6 +42,8 @@ BUILD_DIR=$1
 CACHE_DIR=$2
 
 # The detected application type (`Python`|`Python/Django`).
+echo $BIN_DIR
+echo $BUILD_DIR
 NAME=$($BIN_DIR/detect $BUILD_DIR)
 
 # Where to store the Pip download cache.
@@ -306,6 +308,8 @@ cache_target=${cache}/${opencv_file}
 build_target=${build}/.heroku
 target=/app/.heroku
 
+export PATH=$PATH:$cmake_tar_dir/bin
+
 if [ ! -f ${cache_target} ]; then
   echo "No cached compile detected. Bulding..." | indent
   cd $build
@@ -315,7 +319,7 @@ if [ ! -f ${cache_target} ]; then
   curl -s ${opencv_url} > ${opencv_file}
   tar xf ${opencv_file}
   cd ${opencv_dir}
-  mkdir build
+  #mkdir build
   cd build
   cmake -DCMAKE_INSTALL_PREFIX=${target} -DCMAKE_FIND_ROOT_PATH=${target} -DCMAKE_BUILD_TYPE=RELEASE -DBUILD_SHARED_LIBS=OFF -DCMAKE_SHARED_LINKER_FLAGS="-fPIC" .. | indent
   make install | indent
