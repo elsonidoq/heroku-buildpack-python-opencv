@@ -42,8 +42,6 @@ BUILD_DIR=$1
 CACHE_DIR=$2
 
 # The detected application type (`Python`|`Python/Django`).
-echo $BIN_DIR
-echo $BUILD_DIR
 NAME=$($BIN_DIR/detect $BUILD_DIR)
 
 # Where to store the Pip download cache.
@@ -302,7 +300,8 @@ fi
 
 mkdir -p ${build_target}
 tar xzf ${cache_target} -C ${build_target}
-PATH=${build_target}/bin:$PATH
+export PATH=${build_target}/bin:$PATH
+export PATH=$PATH:$cmake_tar_dir/bin
 
 cache_target=${cache}/${opencv_file}
 build_target=${build}/.heroku
