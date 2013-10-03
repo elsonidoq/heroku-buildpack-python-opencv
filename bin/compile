@@ -328,6 +328,7 @@ if [ ! -f ${cache_target} ]; then
 
   #Create cache slug
   echo "slug"
+  pwd
   tar czf ${cache_target} -C ${target} .
 fi
 
