@@ -311,7 +311,6 @@ cache_target=${cache_abs}/${opencv_file}
 build_target=${build}/.heroku
 target=/app/.heroku
 
-export PATH=$PATH:$cmake_tar_dir/bin
 
 if [ ! -f ${cache_target} ]; then
   echo "No cached compile detected. Bulding..." | indent
@@ -323,6 +322,10 @@ if [ ! -f ${cache_target} ]; then
   tar xf ${opencv_file}
   cd ${opencv_dir}
   #mkdir build
+  echo "pwd"
+  pwd
+  echo "ls"
+  ls
   cd build
   pwd
   cmake -DCMAKE_INSTALL_PREFIX=${target} -DCMAKE_FIND_ROOT_PATH=${target} -DCMAKE_BUILD_TYPE=RELEASE -DBUILD_SHARED_LIBS=OFF -DCMAKE_SHARED_LINKER_FLAGS="-fPIC" .. | indent
