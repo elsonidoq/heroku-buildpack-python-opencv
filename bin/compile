@@ -47,8 +47,10 @@ echo $CACHE_DIR
 echo "**************************************"
 
 # The detected application type (`Python`|`Python/Django`).
-ls $BIN_DIR/detect
 NAME=$($BIN_DIR/detect $BUILD_DIR)
+echo "**************************************"
+echo $NAME
+echo "**************************************"
 
 # Where to store the Pip download cache.
 CACHED_DIRS=".heroku"
