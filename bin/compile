@@ -334,7 +334,7 @@ if [ ! -f ${cache_target} ]; then
   fi 
   cd build
   pwd
-  cmake -DCMAKE_INSTALL_PREFIX=${target} -DCMAKE_FIND_ROOT_PATH=${target} -DCMAKE_BUILD_TYPE=RELEASE -DBUILD_SHARED_LIBS=OFF -DCMAKE_SHARED_LINKER_FLAGS="-fPIC" .. | indent
+  /app/.heroku/bin/cmake -DCMAKE_INSTALL_PREFIX=${target} -DCMAKE_FIND_ROOT_PATH=${target} -DCMAKE_BUILD_TYPE=RELEASE -DBUILD_SHARED_LIBS=OFF -DCMAKE_SHARED_LINKER_FLAGS="-fPIC" .. | indent
   make install | indent
   echo "cd .."
   cd ..
